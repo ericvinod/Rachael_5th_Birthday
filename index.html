@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rachael's 5th Birthday 🎉</title>
+<meta name="description" content="You're invited to Rachael's 5th Birthday! 5 Dec 2026, 6 PM onwards at Mylai Marie-Agam.">
+<meta name="theme-color" content="#ff6fae">
+<link rel="icon" href="favicon.ico"><link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Rachael's 5th">
+<meta property="og:title" content="Rachael's 5th Birthday 🎉"><meta property="og:image" content="assets/icon-512.png">
+<style>
+:root{--bg:#e6f6fd;--card:#fff;--ink:#1f2a52;--pink:#ff6fae;--teal:#2ec4a6;--yel:#ffc93c;--blue:#59b8ee;--mut:#5d6a8f}
+@media(prefers-color-scheme:dark){:root{--bg:#141a36;--card:#202852;--ink:#f3f5ff;--mut:#b4bde3}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:"Trebuchet MS","Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--ink);padding-bottom:env(safe-area-inset-bottom)}
+nav{position:sticky;top:0;z-index:20;display:flex;gap:6px;justify-content:center;padding:calc(8px + env(safe-area-inset-top)) 8px 8px;background:var(--card);box-shadow:0 2px 10px #0002}
+nav a{padding:8px 14px;border-radius:99px;color:var(--ink);text-decoration:none;font-weight:700;font-size:14px}
+nav a:active,nav a:hover{background:var(--pink);color:#fff}
+section{max-width:1000px;margin:0 auto;padding:28px 16px}
+h2{font-size:26px;margin:0 0 6px;text-align:center}.sub{text-align:center;color:var(--mut);margin:0 0 20px}
+.hero{text-align:center;background:linear-gradient(135deg,#ffd6ea,#d4f3ff 55%,#fff4c2);border-radius:28px;padding:26px 18px;margin-top:16px;color:#1f2a52;box-shadow:0 8px 24px #0002;border:4px dashed #fff}
+.hero img{width:min(240px,62vw);border-radius:50%;box-shadow:0 6px 18px #0003}
+.hero h1{margin:10px 0 2px;font-size:clamp(26px,6vw,40px)}
+.det{display:grid;gap:10px;max-width:520px;margin:16px auto}
+.det div{background:#fff;border-radius:16px;padding:12px;font-weight:700;box-shadow:0 2px 6px #0001}
+.det small{display:block;color:#7a86ad;font-weight:600}
+.btn{display:inline-block;border:0;cursor:pointer;font:inherit;font-weight:800;padding:12px 20px;border-radius:99px;background:var(--pink);color:#fff;text-decoration:none;margin:4px;box-shadow:0 4px 0 #c94b86}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 #c94b86}.btn.alt{background:var(--teal);box-shadow:0 4px 0 #1b8f78}.btn.ghost{background:#fff;color:#1f2a52;box-shadow:0 4px 0 #cbd5ee}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.gift{background:var(--card);border-radius:22px;overflow:hidden;box-shadow:0 4px 14px #0002;display:flex;flex-direction:column;position:relative}
+.pic{position:relative;aspect-ratio:1;background:#f1f5fb center/contain no-repeat;overflow:hidden;cursor:zoom-in;display:flex;align-items:center;justify-content:center;font-size:70px}
+.pic img{width:100%;height:100%;object-fit:contain;display:block}
+.lens{position:absolute;inset:0;background-repeat:no-repeat;background-color:#fff;opacity:0;transition:opacity .15s;pointer-events:none}
+.pic.zoom .lens{opacity:1}
+.gift .b{padding:14px;display:flex;flex-direction:column;gap:8px;flex:1}
+.gift h3{margin:0;font-size:16px}.gift .b p{margin:0;color:var(--mut);font-size:13px}.gift .b .btn{margin:auto 0 0;text-align:center}
+.gift.done .pic{filter:grayscale(.8) opacity(.55)}
+.ribbon{position:absolute;top:14px;left:-34px;transform:rotate(-35deg);background:var(--teal);color:#fff;font-weight:800;padding:5px 40px;z-index:2;font-size:13px}
+.tag{background:#e8f9f4;color:#17806b;border-radius:12px;padding:10px;text-align:center;font-weight:700;font-size:14px}
+form{background:var(--card);border-radius:22px;padding:16px;box-shadow:0 4px 14px #0002;display:grid;gap:10px;max-width:560px;margin:0 auto 20px}
+input,textarea{font:inherit;padding:12px;border-radius:12px;border:2px solid #c9d6f2;background:#fff;color:#1f2a52;width:100%}
+.emo{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.emo button{font-size:24px;background:#fff;border:2px solid #c9d6f2;border-radius:12px;padding:4px 8px;cursor:pointer}.emo button.on{border-color:var(--pink);background:#ffe3f0}
+.wishes{columns:2 240px;column-gap:14px}
+.wish{break-inside:avoid;background:var(--card);border-radius:18px;padding:14px;margin-bottom:14px;box-shadow:0 3px 10px #0002;border-top:6px solid var(--c)}
+.wish p{margin:6px 0;white-space:pre-wrap;word-break:break-word}.wish b{color:var(--c)}.wish small{color:var(--mut)}
+.modal{position:fixed;inset:0;background:#000b;display:none;align-items:center;justify-content:center;z-index:50;padding:16px}
+.modal.on{display:flex}.modal>div{background:var(--card);border-radius:22px;padding:18px;max-width:420px;width:100%;display:grid;gap:10px}
+.modal img{max-width:100%;max-height:80vh;border-radius:12px;background:#fff}
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#1f2a52;color:#fff;padding:12px 20px;border-radius:99px;opacity:0;pointer-events:none;transition:.3s;z-index:60}#toast.on{opacity:1}
+footer{text-align:center;color:var(--mut);padding:20px;font-size:13px}
+</style></head><body>
+<nav><a href="#invite">🎈 Invite</a><a href="#registry">🎁 Gifts</a><a href="#slambook">💌 Slambook</a></nav>
+
+<section id="invite"><div class="hero">
+<img src="assets/logo.png" alt="Rachael's 5th Birthday">
+<h1>You're Invited! 🎉</h1><p style="margin:0;font-size:18px">Come celebrate <b>Rachael turning 5</b> with cake, games &amp; lots of fun!</p>
+<div class="det">
+<div>📅 Saturday, 5th December 2026</div>
+<div>🕕 6:00 PM onwards</div>
+<div>📍 Mylai Marie-Agam</div></div>
+<p style="margin:0 0 4px">Wondering what to bring? Peek at Rachael's wish list 👇</p>
+<a class="btn" href="#registry">🎁 Open Gift Registry</a>
+<button class="btn alt" id="cal">📆 Add to Calendar</button>
+<button class="btn ghost" id="share">📤 Share Invite</button>
+<p style="margin:8px 0 0;font-size:13px">Gift registry link: <a id="reglink" href="#registry" style="color:#c94b86;font-weight:700"></a></p>
+</div></section>
+
+<section id="registry"><h2>🎁 Gift Registry</h2><p class="sub">Hover (or tap) a photo to zoom. Once a gift is bought it's taken off the list so there are no doubles!</p>
+<div class="grid" id="gifts"></div></section>
+
+<section id="slambook"><h2>💌 Rachael's Slambook</h2><p class="sub">Leave a sweet wish for the birthday girl!</p>
+<form id="wf"><input id="wn" placeholder="Your name" maxlength="60" required>
+<div class="emo" id="emo"></div>
+<textarea id="wm" rows="4" placeholder="Write your birthday wish…" maxlength="500" required></textarea>
+<button class="btn" type="submit">Send Wish 💖</button></form>
+<div class="wishes" id="wl"><p class="sub">Loading wishes…</p></div></section>
+
+<footer>Made with 💖 for Rachael's 5th Birthday</footer>
+
+<div class="modal" id="bm"><div><h3 style="margin:0" id="bt"></h3>
+<p style="margin:0;color:var(--mut);font-size:14px">1. Open the store and buy it. 2. Come back and confirm so nobody else buys the same gift.</p>
+<a class="btn" id="bgo" target="_blank" rel="noopener">🛒 Open store to buy</a>
+<input id="bn" placeholder="Your name (optional)" maxlength="60">
+<button class="btn alt" id="bok">✅ I've bought it</button><button class="btn ghost" id="bx">Close</button></div></div>
+<div class="modal" id="zm"><img id="zi" alt=""></div>
+<div id="toast"></div>
+
+<script src="config.js"></script>
+<script>
+const GIFTS=[
+{id:"bird",t:"Voice-Controlled Talking Bird",d:"Interactive pet toy that repeats what you say",e:"🦜",u:"https://kidsbestie.com/collections/shop-by-price/products/voice-controlled-talking-bird-interactive-repeating-pet-toy?_"},
+{id:"art",t:"168-Piece Art Set",d:"Drawing & painting set for kids",e:"🎨",u:"https://kidsbestie.com/collections/gift-and-fun-toys/products/168-piece-art-set-drawing-and-painting-set-for-kids",i:"https://kidsbestie.com/cdn/shop/files/1_b1e9df78-a3b1-4eec-880d-84e5ab6757a5.png?v=1736512106"},
+{id:"speaker",t:"Mini Vocal Bluetooth Speaker",d:"Wireless speaker with mic & RGB lights",e:"🎤",u:"https://kidsbestie.com/collections/gift-and-fun-toys/products/wireless-mini-vocal-bluetooth-speaker-with-mic-rgb-lights-10-w-bluetooth-speaker",i:"https://kidsbestie.com/cdn/shop/files/Mini__Vocal__Bluetooth__Speaker__Mic.png?v=1786526852"},
+{id:"foam",t:"Alphabet & Number Foam Mat",d:"Soft play-and-learn foam mat",e:"🔤",u:"https://kidsbestie.com/collections/gift-and-fun-toys/products/foam-mat-alphabet-number-kids",i:"https://kidsbestie.com/cdn/shop/files/foam-mat-for-kids-interlocking-learning-alphabet-and-number-mat-for-kids-multi-color-random-colour-will-be-send-kids-bestie-1.png?v=1717788660"},
+{id:"piano",t:"2-in-1 Piano Xylophone",d:"Musical toy for little ones",e:"🎹",u:"https://kidsbestie.com/collections/gift-and-fun-toys/products/2-in-1-piano-xylophone-for-toddlers",i:"https://kidsbestie.com/cdn/shop/files/2-in-1-piano-and-xylophone-with-2-mallets-kids-bestie-1.jpg?v=1721026512"}];
+const AMAZON="https://www.amazon.in/hz/wishlist/ls/2EX90GSB2HI8L?ref_=wl_share";
+const API_BASE=window.API_BASE;
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("on");setTimeout(()=>t.classList.remove("on"),2600)};
+const api=(p,o)=>fetch(API_BASE+"/api/"+p,o).then(async r=>{const j=await r.json().catch(()=>({}));if(!r.ok)throw Object.assign(new Error(j.error||"Error"),{status:r.status});return j});
+let bought=new Set(),cur=null;
+const imgSrc=g=>g.i||API_BASE+"/api/img?id="+g.id;
+
+function render(){
+ $("#gifts").innerHTML=GIFTS.map(g=>{const done=bought.has(g.id);
+  return `<div class="gift ${done?"done":""}">${done?'<div class="ribbon">GIFTED ✓</div>':""}
+  <div class="pic" data-id="${g.id}"><img src="${imgSrc(g)}" alt="${esc(g.t)}" loading="lazy" onerror="this.replaceWith(document.createTextNode('${g.e}'))"><div class="lens"></div></div>
+  <div class="b"><h3>${esc(g.t)}</h3><p>${esc(g.d)}</p>
+  ${done?'<div class="tag">🎉 Already bought — thank you!</div>':`<button class="btn" data-buy="${g.id}">🛒 Buy this gift</button>`}</div></div>`}).join("")+
+  `<div class="gift"><div class="pic" style="cursor:default">🛍️</div><div class="b"><h3>More ideas on Amazon</h3><p>Rachael's full Amazon wishlist</p><a class="btn alt" href="${AMAZON}" target="_blank" rel="noopener">Open Amazon Wishlist</a></div></div>`;
+ document.querySelectorAll(".pic[data-id]").forEach(initZoom);
+}
+function initZoom(p){
+ const img=p.querySelector("img"),lens=p.querySelector(".lens");if(!img)return;
+ const set=()=>{lens.style.backgroundImage=`url("${img.currentSrc||img.src}")`};
+ img.addEventListener("load",set);if(img.complete)set();
+ const S=2.6;
+ p.addEventListener("mousemove",e=>{const r=p.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+  const nat=img.naturalWidth/img.naturalHeight||1;
+  const fit=nat>=1?{w:r.width,h:r.width/nat}:{w:r.height*nat,h:r.height};
+  const w=fit.w*S,h=fit.h*S,ox=(r.width-fit.w)/2,oy=(r.height-fit.h)/2;
+  lens.style.backgroundSize=`${w}px ${h}px`;
+  lens.style.backgroundPosition=`${x*r.width-(ox*S+x*fit.w*S)}px ${y*r.height-(oy*S+y*fit.h*S)}px`;
+  p.classList.add("zoom")});
+ p.addEventListener("mouseleave",()=>p.classList.remove("zoom"));
+ p.addEventListener("click",()=>{if(matchMedia("(hover:none)").matches){$("#zi").src=img.currentSrc||img.src;$("#zm").classList.add("on")}});
+}
+$("#zm").onclick=()=>$("#zm").classList.remove("on");
+document.addEventListener("click",e=>{const id=e.target.dataset&&e.target.dataset.buy;if(!id)return;
+ cur=GIFTS.find(g=>g.id===id);$("#bt").textContent="🎁 "+cur.t;$("#bgo").href=cur.u;$("#bn").value="";$("#bm").classList.add("on")});
+$("#bx").onclick=()=>$("#bm").classList.remove("on");
+$("#bok").onclick=async()=>{const b=$("#bok");b.disabled=true;
+ try{await api("buy",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({giftId:cur.id,name:$("#bn").value})});toast("Thank you! 🎉 Marked as bought")}
+ catch(e){toast(e.status===409?"Someone just bought this one!":"Couldn't save, please try again")}
+ b.disabled=false;$("#bm").classList.remove("on");load()};
+
+const EM=["🎈","🎂","🎁","🦄","🌈","⭐","💖","🎉"],COL=["#ff6fae","#2ec4a6","#f5a400","#59b8ee","#9b7bff"];let emo="🎈";
+$("#emo").innerHTML=EM.map(e=>`<button type="button" class="${e===emo?"on":""}">${e}</button>`).join("");
+$("#emo").onclick=e=>{if(e.target.tagName!=="BUTTON")return;emo=e.target.textContent;[...$("#emo").children].forEach(b=>b.classList.toggle("on",b===e.target))};
+$("#wf").onsubmit=async e=>{e.preventDefault();
+ try{await api("wish",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:$("#wn").value,message:$("#wm").value,emoji:emo})});$("#wm").value="";toast("Wish added! 💖");load()}
+ catch{toast("Couldn't save your wish, try again")}};
+function renderWishes(w){$("#wl").innerHTML=w.length?w.map((x,i)=>`<div class="wish" style="--c:${COL[i%5]}"><b>${esc(x.emoji||"🎈")} ${esc(x.name)}</b><p>${esc(x.message)}</p><small>${new Date(x.created_at).toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"})}</small></div>`).join(""):'<p class="sub">Be the first to leave a wish! 🎈</p>'}
+async function load(){try{const s=await api("state");bought=new Set(s.bought.map(b=>b.gift_id));renderWishes(s.wishes)}catch{$("#wl").innerHTML='<p class="sub">Couldn\'t load wishes right now.</p>'}render()}
+
+const regUrl=location.origin+location.pathname+"#registry";
+$("#reglink").textContent=regUrl;$("#reglink").href=regUrl;
+$("#share").onclick=async()=>{const text="🎉 You're invited to Rachael's 5th Birthday!\n📅 5 Dec 2026, 6 PM onwards\n📍 Mylai Marie-Agam\n🎁 Gift registry: "+regUrl;
+ try{navigator.share?await navigator.share({title:"Rachael's 5th Birthday",text}):(await navigator.clipboard.writeText(text),toast("Invite copied!"))}catch{}};
+$("#cal").onclick=()=>{const ics=["BEGIN:VCALENDAR","VERSION:2.0","BEGIN:VEVENT","UID:rachael5@birthday","DTSTAMP:20261007T000000Z","DTSTART:20261205T123000Z","DTEND:20261205T163000Z","SUMMARY:Rachael's 5th Birthday 🎉","LOCATION:Mylai Marie-Agam","DESCRIPTION:Gift registry: "+regUrl,"END:VEVENT","END:VCALENDAR"].join("\r\n");
+ const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([ics],{type:"text/calendar"}));a.download="rachael-5th-birthday.ics";a.click()};
+render();load();setInterval(load,30000);
+</script></body></html>
