@@ -51,6 +51,7 @@ input,textarea{font:inherit;padding:12px;border-radius:12px;border:2px solid #c9
 .modal img{max-width:100%;max-height:80vh;border-radius:12px;background:#fff}
 #toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#1f2a52;color:#fff;padding:12px 20px;border-radius:99px;opacity:0;pointer-events:none;transition:.3s;z-index:60}#toast.on{opacity:1}
 footer{text-align:center;color:var(--mut);padding:20px;font-size:13px}
+.grp{grid-column:1/-1;margin:10px 0 0;font-size:20px}
 </style></head><body>
 <nav><a href="#invite">🎈 Invite</a><a href="#registry">🎁 Gifts</a><a href="#slambook">💌 Slambook</a></nav>
 
@@ -91,27 +92,42 @@ footer{text-align:center;color:var(--mut);padding:20px;font-size:13px}
 <script src="config.js"></script>
 <script>
 const GIFTS=[
-{id:"bird",t:"Voice-Controlled Talking Bird",d:"Interactive pet toy that repeats what you say",e:"🦜",u:"https://kidsbestie.com/collections/shop-by-price/products/voice-controlled-talking-bird-interactive-repeating-pet-toy?_"},
-{id:"art",t:"168-Piece Art Set",d:"Drawing & painting set for kids",e:"🎨",u:"https://kidsbestie.com/collections/gift-and-fun-toys/products/168-piece-art-set-drawing-and-painting-set-for-kids",i:"https://kidsbestie.com/cdn/shop/files/1_b1e9df78-a3b1-4eec-880d-84e5ab6757a5.png?v=1736512106"},
-{id:"speaker",t:"Mini Vocal Bluetooth Speaker",d:"Wireless speaker with mic & RGB lights",e:"🎤",u:"https://kidsbestie.com/collections/gift-and-fun-toys/products/wireless-mini-vocal-bluetooth-speaker-with-mic-rgb-lights-10-w-bluetooth-speaker",i:"https://kidsbestie.com/cdn/shop/files/Mini__Vocal__Bluetooth__Speaker__Mic.png?v=1786526852"},
-{id:"foam",t:"Alphabet & Number Foam Mat",d:"Soft play-and-learn foam mat",e:"🔤",u:"https://kidsbestie.com/collections/gift-and-fun-toys/products/foam-mat-alphabet-number-kids",i:"https://kidsbestie.com/cdn/shop/files/foam-mat-for-kids-interlocking-learning-alphabet-and-number-mat-for-kids-multi-color-random-colour-will-be-send-kids-bestie-1.png?v=1717788660"},
-{id:"piano",t:"2-in-1 Piano Xylophone",d:"Musical toy for little ones",e:"🎹",u:"https://kidsbestie.com/collections/gift-and-fun-toys/products/2-in-1-piano-xylophone-for-toddlers",i:"https://kidsbestie.com/cdn/shop/files/2-in-1-piano-and-xylophone-with-2-mallets-kids-bestie-1.jpg?v=1721026512"}];
-const AMAZON="https://www.amazon.in/hz/wishlist/ls/2EX90GSB2HI8L?ref_=wl_share";
+{id:"bird",v:"Free shipping PAN India above ₹699",t:"Voice-Controlled Talking Bird",d:"Interactive pet toy that repeats what you say",e:"🦜",u:"https://kidsbestie.com/collections/shop-by-price/products/voice-controlled-talking-bird-interactive-repeating-pet-toy?_"},
+{id:"art",v:"Free shipping PAN India above ₹699",t:"168-Piece Art Set",d:"Drawing & painting set for kids",e:"🎨",p:379,u:"https://kidsbestie.com/collections/gift-and-fun-toys/products/168-piece-art-set-drawing-and-painting-set-for-kids",i:"https://kidsbestie.com/cdn/shop/files/1_b1e9df78-a3b1-4eec-880d-84e5ab6757a5.png?v=1736512106"},
+{id:"speaker",v:"Free shipping PAN India above ₹699",t:"Mini Vocal Bluetooth Speaker",d:"Wireless speaker with mic & RGB lights",e:"🎤",p:349,u:"https://kidsbestie.com/collections/gift-and-fun-toys/products/wireless-mini-vocal-bluetooth-speaker-with-mic-rgb-lights-10-w-bluetooth-speaker",i:"https://kidsbestie.com/cdn/shop/files/Mini__Vocal__Bluetooth__Speaker__Mic.png?v=1786526852"},
+{id:"foam",v:"Free shipping PAN India above ₹699",t:"Alphabet & Number Foam Mat",d:"Soft play-and-learn foam mat",e:"🔤",p:199,u:"https://kidsbestie.com/collections/gift-and-fun-toys/products/foam-mat-alphabet-number-kids",i:"https://kidsbestie.com/cdn/shop/files/foam-mat-for-kids-interlocking-learning-alphabet-and-number-mat-for-kids-multi-color-random-colour-will-be-send-kids-bestie-1.png?v=1717788660"},
+{id:"piano",v:"Free shipping PAN India above ₹699",t:"2-in-1 Piano Xylophone",d:"Musical toy for little ones",e:"🎹",p:245,u:"https://kidsbestie.com/collections/gift-and-fun-toys/products/2-in-1-piano-xylophone-for-toddlers",i:"https://kidsbestie.com/cdn/shop/files/2-in-1-piano-and-xylophone-with-2-mallets-kids-bestie-1.jpg?v=1721026512"},
+{id:"tictactoe",v:"Free shipping PAN India above ₹699",t:"AI Tic Tac Toe (9 Game Modes)",d:"Brain-boosting strategy game",e:"❎",p:325,u:"https://kidsbestie.com/collections/shop-by-price/products/ai-intelligence-tic-tac-toe-9-game-modes-brain-boosting-strategy-fun",i:"https://kidsbestie.com/cdn/shop/files/1_91c15440-7219-4181-953c-bc17debb5266.png?v=1758895280"},
+{id:"B0FN3GLZ6X",t:"Kids Modular Kitchen Playset",d:"Music & lights, openable doors",e:"🎁",p:999,v:"FREE delivery Tue, 13 Oct (Chennai, as of 8 Oct)",i:"assets/products/a1.jpg",u:"https://www.amazon.in/dp/B0FN3GLZ6X/?coliid=I383TV6N9X7MR2&colid=2EX90GSB2HI8L&psc=1&ref_=list_c_wl_lv_ov_lig_dp_it"},
+{id:"B0HF42GBCQ",t:"Kids Kitchen Set (43 Pcs)",d:"Working sink, light & sound stove",e:"🎁",p:2495,v:"FREE delivery Tue, 13 Oct (Chennai, as of 8 Oct)",i:"assets/products/a2.jpg",u:"https://www.amazon.in/dp/B0HF42GBCQ/?coliid=I3S9AYV5E66W3M&colid=2EX90GSB2HI8L&psc=1&ref_=list_c_wl_lv_ov_lig_dp_it"},
+{id:"B0DX2B9P66",t:"GRAPHENE Drawing Projector Table",d:"24 patterns & 12 colour pens",e:"🎁",p:569,v:"FREE delivery Today, 10 am – 2 pm (Chennai, as of 8 Oct)",i:"assets/products/a3.jpg",u:"https://www.amazon.in/dp/B0DX2B9P66/?coliid=I1G2R2LFDHYF9B&colid=2EX90GSB2HI8L&psc=1&ref_=list_c_wl_lv_ov_lig_dp_it"},
+{id:"B0FBM2TBG6",t:"Skillmatics Water Spotter",d:"Reusable search & find, mess-free",e:"🎁",p:633,v:"FREE delivery Tue, 13 Oct (Chennai, as of 8 Oct)",i:"assets/products/a4.jpg",u:"https://www.amazon.in/dp/B0FBM2TBG6/?coliid=I2E2KRPKF7Q6EE&colid=2EX90GSB2HI8L&psc=1&ref_=list_c_wl_lv_ov_lig_dp_it"},
+{id:"9389053137",t:"101 Copy Coloring Book",d:"Fun activity book for ages 3–6",e:"🎁",p:170,v:"FREE delivery Thu, 15 Oct (Chennai, as of 8 Oct)",i:"assets/products/a5.jpg",u:"https://www.amazon.in/dp/9389053137/?coliid=I2TS18I71YO5TD&colid=2EX90GSB2HI8L&psc=1&ref_=list_c_wl_lv_ov_lig_dp_it"},
+{id:"B0HBQW29Y4",t:"BAGJI DIY Coaster Painting Kit",d:"6 wooden coasters, 12 colours & brush",e:"🎁",p:329,v:"FREE delivery Tomorrow, 9 Oct (Chennai, as of 8 Oct)",i:"assets/products/a6.jpg",u:"https://www.amazon.in/dp/B0HBQW29Y4/?coliid=I3R49SJ7NTJZNC&colid=2EX90GSB2HI8L&psc=1&ref_=list_c_wl_lv_ov_lig_dp_it"},
+{id:"B0DFMFYZYS",t:"Water Magic Coloring Books",d:"4 refillable pens, reusable & mess-free",e:"🎁",p:172,v:"FREE delivery Today, 10 am – 2 pm (Chennai, as of 8 Oct)",i:"assets/products/a7.jpg",u:"https://www.amazon.in/dp/B0DFMFYZYS/?coliid=I3PZARO941I8YL&colid=2EX90GSB2HI8L&psc=1&ref_=list_c_wl_lv_ov_lig_dp_it"},
+{id:"B09NSSYTN6",t:"Imagimake DIY Window Art Princess",d:"Glass painting kit with 16 suncatchers",e:"🎁",p:565,v:"FREE delivery Today, 10 am – 2 pm (Chennai, as of 8 Oct)",i:"assets/products/a8.jpg",u:"https://www.amazon.in/dp/B09NSSYTN6/?coliid=I24NVUE1VD32FY&colid=2EX90GSB2HI8L&psc=1&ref_=list_c_wl_lv_ov_lig_dp_it"},
+{id:"B0CCYH843S",t:"Skillmatics Snip Snip Scissor Skills",d:"25 cutting & craft activities, ages 3–7",e:"🎁",p:477,v:"FREE delivery Today by 10 PM (Chennai, as of 8 Oct)",i:"assets/products/a9.jpg",u:"https://www.amazon.in/dp/B0CCYH843S/?coliid=I32FKB0013N1P9&colid=2EX90GSB2HI8L&psc=1&ref_=list_c_wl_lv_ov_lig_dp_it"},
+{id:"B0DCBC28SG",t:"WISHKEY 145-Pc Unicorn Art Set",d:"Storage case with colours & pencils",e:"🎁",p:869,v:"FREE delivery Tomorrow, 9 Oct (Chennai, as of 8 Oct)",i:"assets/products/a10.jpg",u:"https://www.amazon.in/dp/B0DCBC28SG/?coliid=IPFF7ED0ZZZUF&colid=2EX90GSB2HI8L&psc=1&ref_=list_c_wl_lv_ov_lig_dp_it"},
+{id:"B0GX24MZKZ",t:"Foldable Play Tent House (Space-Blue)",d:"One-side round, indoor & outdoor",e:"🎁",p:897,v:"FREE delivery Tomorrow, 9 Oct (Chennai, as of 8 Oct)",i:"assets/products/a11.jpg",u:"https://www.amazon.in/dp/B0GX24MZKZ/?coliid=I2ZJQ9LUONXHLS&colid=2EX90GSB2HI8L&psc=1&ref_=list_c_wl_lv_ov_lig_dp_it"},
+{id:"B0FP4SBVDS",t:"Foldable Play Tent House (Planet Blue)",d:"Big size pop-up, easy setup",e:"🎁",p:892,v:"FREE delivery Tomorrow, 9 Oct (Chennai, as of 8 Oct)",i:"assets/products/a12.jpg",u:"https://www.amazon.in/dp/B0FP4SBVDS/?coliid=I1VBKFSM1RP490&colid=2EX90GSB2HI8L&psc=1&ref_=list_c_wl_lv_ov_lig_dp_it"},
+{id:"B08D9JNTZ3",t:"Nyra Decor Portable Teepee Tent",d:"Padded mat, cushions & kit bag",e:"🎁",p:3789,v:"FREE delivery Tue, 13 Oct (Chennai, as of 8 Oct)",i:"assets/products/a13.jpg",u:"https://www.amazon.in/dp/B08D9JNTZ3/?coliid=I1TCU8XAM5SD6D&colid=2EX90GSB2HI8L&psc=1&ref_=list_c_wl_lv_ov_lig_dp_it"}];
 const API_BASE=window.API_BASE;
 const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("on");setTimeout(()=>t.classList.remove("on"),2600)};
 const api=(p,o)=>fetch(API_BASE+"/api/"+p,o).then(async r=>{const j=await r.json().catch(()=>({}));if(!r.ok)throw Object.assign(new Error(j.error||"Error"),{status:r.status});return j});
-let bought=new Set(),cur=null;
+let bought=new Set(),cur=null,info={};
 const imgSrc=g=>g.i||API_BASE+"/api/img?id="+g.id;
 
 function render(){
- $("#gifts").innerHTML=GIFTS.map(g=>{const done=bought.has(g.id);
-  return `<div class="gift ${done?"done":""}">${done?'<div class="ribbon">GIFTED ✓</div>':""}
-  <div class="pic" data-id="${g.id}"><img src="${imgSrc(g)}" alt="${esc(g.t)}" loading="lazy" onerror="this.replaceWith(document.createTextNode('${g.e}'))"><div class="lens"></div></div>
-  <div class="b"><h3>${esc(g.t)}</h3><p>${esc(g.d)}</p>
-  ${done?'<div class="tag">🎉 Already bought — thank you!</div>':`<button class="btn" data-buy="${g.id}">🛒 Buy this gift</button>`}</div></div>`}).join("")+
-  `<div class="gift"><div class="pic" style="cursor:default">🛍️</div><div class="b"><h3>More ideas on Amazon</h3><p>Rachael's full Amazon wishlist</p><a class="btn alt" href="${AMAZON}" target="_blank" rel="noopener">Open Amazon Wishlist</a></div></div>`;
+ const N=g=>g.t||(info[g.id]&&info[g.id].t)||"Amazon gift pick";
+ const P=g=>g.p||(info[g.id]&&info[g.id].p)||null;
+ const card=g=>{const done=bought.has(g.id);return `<div class="gift ${done?"done":""}">${done?'<div class="ribbon">GIFTED ✓</div>':""}
+  <div class="pic" data-id="${g.id}"><img src="${imgSrc(g)}" alt="${esc(N(g))}" loading="lazy" onerror="this.replaceWith(document.createTextNode('${g.e}'))"><div class="lens"></div></div>
+  <div class="b"><h3>${esc(N(g))}${P(g)?` <span style="color:var(--pink)">₹${P(g)}</span>`:""}</h3><p>${esc(g.d)}</p>${g.v?`<p>🚚 ${esc(g.v)}</p>`:""}
+  ${done?'<div class="tag">🎉 Already bought — thank you!</div>':`<button class="btn" data-buy="${g.id}">🛒 Buy this gift</button>`}</div></div>`};
+ const rows=[["Rs 0 – Rs 500",n=>n!=null&&n<=500],["Rs 500 – Rs 1,000",n=>n>500&&n<1000],["Rs 1,000 and above",n=>n>=1000],["Price on store page",n=>n==null]];
+ $("#gifts").innerHTML=rows.map(([t,f])=>{const l=GIFTS.filter(g=>f(P(g)));return l.length?`<h3 class="grp">${t}</h3>`+l.map(card).join(""):""}).join("");
  document.querySelectorAll(".pic[data-id]").forEach(initZoom);
 }
 function initZoom(p){
@@ -131,7 +147,7 @@ function initZoom(p){
 }
 $("#zm").onclick=()=>$("#zm").classList.remove("on");
 document.addEventListener("click",e=>{const id=e.target.dataset&&e.target.dataset.buy;if(!id)return;
- cur=GIFTS.find(g=>g.id===id);$("#bt").textContent="🎁 "+cur.t;$("#bgo").href=cur.u;$("#bn").value="";$("#bm").classList.add("on")});
+ cur=GIFTS.find(g=>g.id===id);$("#bt").textContent="🎁 "+N(cur);$("#bgo").href=cur.u;$("#bn").value="";$("#bm").classList.add("on")});
 $("#bx").onclick=()=>$("#bm").classList.remove("on");
 $("#bok").onclick=async()=>{const b=$("#bok");b.disabled=true;
  try{await api("buy",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({giftId:cur.id,name:$("#bn").value})});toast("Thank you! 🎉 Marked as bought")}
@@ -145,7 +161,7 @@ $("#wf").onsubmit=async e=>{e.preventDefault();
  try{await api("wish",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:$("#wn").value,message:$("#wm").value,emoji:emo})});$("#wm").value="";toast("Wish added! 💖");load()}
  catch{toast("Couldn't save your wish, try again")}};
 function renderWishes(w){$("#wl").innerHTML=w.length?w.map((x,i)=>`<div class="wish" style="--c:${COL[i%5]}"><b>${esc(x.emoji||"🎈")} ${esc(x.name)}</b><p>${esc(x.message)}</p><small>${new Date(x.created_at).toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"})}</small></div>`).join(""):'<p class="sub">Be the first to leave a wish! 🎈</p>'}
-async function load(){try{const s=await api("state");bought=new Set(s.bought.map(b=>b.gift_id));renderWishes(s.wishes)}catch{$("#wl").innerHTML='<p class="sub">Couldn\'t load wishes right now.</p>'}render()}
+async function load(){try{const s=await api("state");bought=new Set(s.bought.map(b=>b.gift_id));renderWishes(s.wishes)}catch{$("#wl").innerHTML='<p class="sub">Couldn\'t load wishes right now.</p>'}if(!Object.keys(info).length)try{info=await api("info")}catch{}render()}
 
 const regUrl=location.origin+location.pathname+"#registry";
 $("#reglink").textContent=regUrl;$("#reglink").href=regUrl;

@@ -9,7 +9,7 @@ Run `schema.sql` in your database's SQL editor. It creates EMPTY tables.
 ## 2. Deploy the API worker
 Easiest, no tools: Cloudflare dashboard > Workers & Pages > Create > "Hello World" worker > Edit code >
 paste the contents of `worker/worker.js` > Deploy. Copy the address it gives you (https://xxx.workers.dev).
-(CLI alternative: `cd worker && npx wrangler deploy`.)
+Do NOT upload files; use "Hello World" + paste code (an uploaded wrangler.toml makes Deploy greyed out).
 The credentials are already inside worker.js; you may instead set Worker variables `DB_URL` and `DB_KEY`.
 
 ## 3. Point the site at the worker
