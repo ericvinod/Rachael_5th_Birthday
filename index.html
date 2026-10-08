@@ -70,6 +70,7 @@ footer{text-align:center;color:var(--mut);padding:20px;font-size:13px}
 </div></section>
 
 <section id="registry"><h2>🎁 Gift Registry</h2><p class="sub">Hover (or tap) a photo to zoom. Once a gift is bought it's taken off the list so there are no doubles!</p>
+<p class="sub" style="font-size:13px">🚚 The delivery dates are an estimate, taken when this site was built. Please check vendor for exact dates.</p>
 <div class="grid" id="gifts"></div></section>
 
 <section id="slambook"><h2>💌 Rachael's Slambook</h2><p class="sub">Leave a sweet wish for the birthday girl!</p>
@@ -92,7 +93,7 @@ footer{text-align:center;color:var(--mut);padding:20px;font-size:13px}
 <script src="config.js"></script>
 <script>
 const GIFTS=[
-{id:"bird",v:"Free shipping PAN India above ₹699",t:"Voice-Controlled Talking Bird",d:"Interactive pet toy that repeats what you say",e:"🦜",p:399,i:"assets/products/bird.jpg",u:"https://kidsbestie.com/collections/shop-by-price/products/voice-controlled-talking-bird-interactive-repeating-pet-toy?_"},
+{id:"bird",v:"Free shipping PAN India above ₹699",t:"Voice-Controlled Talking Bird",d:"Interactive pet toy that repeats what you say",e:"🦜",p:399,i:"https://kidsbestie.com/cdn/shop/files/1_6e2543ad-5f5c-4c3b-a649-88b49fede343.png?v=1758896124",u:"https://kidsbestie.com/collections/shop-by-price/products/voice-controlled-talking-bird-interactive-repeating-pet-toy?_"},
 {id:"art",v:"Free shipping PAN India above ₹699",t:"168-Piece Art Set",d:"Drawing & painting set for kids",e:"🎨",p:379,u:"https://kidsbestie.com/collections/gift-and-fun-toys/products/168-piece-art-set-drawing-and-painting-set-for-kids",i:"https://kidsbestie.com/cdn/shop/files/1_b1e9df78-a3b1-4eec-880d-84e5ab6757a5.png?v=1736512106"},
 {id:"speaker",v:"Free shipping PAN India above ₹699",t:"Mini Vocal Bluetooth Speaker",d:"Wireless speaker with mic & RGB lights",e:"🎤",p:349,u:"https://kidsbestie.com/collections/gift-and-fun-toys/products/wireless-mini-vocal-bluetooth-speaker-with-mic-rgb-lights-10-w-bluetooth-speaker",i:"https://kidsbestie.com/cdn/shop/files/Mini__Vocal__Bluetooth__Speaker__Mic.png?v=1786526852"},
 {id:"foam",v:"Free shipping PAN India above ₹699",t:"Alphabet & Number Foam Mat",d:"Soft play-and-learn foam mat",e:"🔤",p:199,u:"https://kidsbestie.com/collections/gift-and-fun-toys/products/foam-mat-alphabet-number-kids",i:"https://kidsbestie.com/cdn/shop/files/foam-mat-for-kids-interlocking-learning-alphabet-and-number-mat-for-kids-multi-color-random-colour-will-be-send-kids-bestie-1.png?v=1717788660"},
@@ -146,6 +147,7 @@ function initZoom(p){
  p.addEventListener("click",()=>{if(matchMedia("(hover:none)").matches){$("#zi").src=img.currentSrc||img.src;$("#zm").classList.add("on")}});
 }
 $("#zm").onclick=()=>$("#zm").classList.remove("on");
+const N=g=>g.t||(info[g.id]&&info[g.id].t)||"Amazon gift pick";
 document.addEventListener("click",e=>{const id=e.target.dataset&&e.target.dataset.buy;if(!id)return;
  cur=GIFTS.find(g=>g.id===id);$("#bt").textContent="🎁 "+N(cur);$("#bgo").href=cur.u;$("#bn").value="";$("#bm").classList.add("on");window.open(cur.u,"_blank","noopener")});
 $("#bx").onclick=()=>$("#bm").classList.remove("on");
