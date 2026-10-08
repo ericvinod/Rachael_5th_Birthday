@@ -129,7 +129,7 @@ function render(){
 }
 const N=g=>g.t||(info[g.id]&&info[g.id].t)||"Amazon gift pick";
 document.addEventListener("click",e=>{const id=e.target.dataset&&e.target.dataset.buy;if(!id)return;
- cur=GIFTS.find(g=>g.id===id);$("#bt").textContent="🎁 "+N(cur);$("#bgo").href=cur.u;$("#bn").value="";$("#bm").classList.add("on");window.open(cur.u,"_blank","noopener")});
+ cur=GIFTS.find(g=>g.id===id);$("#bt").textContent="🎁 "+N(cur);$("#bgo").href=cur.u;$("#bn").value="";$("#bm").classList.add("on")});
 $("#bx").onclick=()=>$("#bm").classList.remove("on");
 $("#bok").onclick=async()=>{const b=$("#bok");b.disabled=true;
  try{await api("buy",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({giftId:cur.id,name:$("#bn").value})});toast("Thank you! 🎉 Marked as bought")}
