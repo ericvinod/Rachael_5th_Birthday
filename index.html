@@ -30,10 +30,8 @@ h2{font-size:26px;margin:0 0 6px;text-align:center}.sub{text-align:center;color:
 .btn:active{transform:translateY(3px);box-shadow:0 1px 0 #c94b86}.btn.alt{background:var(--teal);box-shadow:0 4px 0 #1b8f78}.btn.ghost{background:#fff;color:#1f2a52;box-shadow:0 4px 0 #cbd5ee}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
 .gift{background:var(--card);border-radius:22px;overflow:hidden;box-shadow:0 4px 14px #0002;display:flex;flex-direction:column;position:relative}
-.pic{position:relative;aspect-ratio:1;background:#f1f5fb center/contain no-repeat;overflow:hidden;cursor:zoom-in;display:flex;align-items:center;justify-content:center;font-size:70px}
+.pic{position:relative;aspect-ratio:1;background:#f1f5fb center/contain no-repeat;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:70px}
 .pic img{width:100%;height:100%;object-fit:contain;display:block}
-.lens{position:absolute;inset:0;background-repeat:no-repeat;background-color:#fff;opacity:0;transition:opacity .15s;pointer-events:none}
-.pic.zoom .lens{opacity:1}
 .gift .b{padding:14px;display:flex;flex-direction:column;gap:8px;flex:1}
 .gift h3{margin:0;font-size:16px}.gift .b p{margin:0;color:var(--mut);font-size:13px}.gift .b .btn{margin:auto 0 0;text-align:center}
 .gift.done .pic{filter:grayscale(.8) opacity(.55)}
@@ -69,7 +67,7 @@ footer{text-align:center;color:var(--mut);padding:20px;font-size:13px}
 <p style="margin:8px 0 0;font-size:13px">Gift registry link: <a id="reglink" href="#registry" style="color:#c94b86;font-weight:700"></a></p>
 </div></section>
 
-<section id="registry"><h2>🎁 Gift Registry</h2><p class="sub">Hover (or tap) a photo to zoom. Once a gift is bought it's taken off the list so there are no doubles!</p>
+<section id="registry"><h2>🎁 Gift Registry</h2><p class="sub">Once a gift is bought it's taken off the list so there are no doubles!</p>
 <p class="sub" style="font-size:13px">🚚 The delivery dates are an estimate, taken when this site was built. Please check vendor for exact dates.</p>
 <div class="grid" id="gifts"></div></section>
 
@@ -87,13 +85,12 @@ footer{text-align:center;color:var(--mut);padding:20px;font-size:13px}
 <a class="btn" id="bgo" target="_blank" rel="noopener">🛒 Open store to buy</a>
 <input id="bn" placeholder="Your name (optional)" maxlength="60">
 <button class="btn alt" id="bok">✅ I've bought it</button><button class="btn ghost" id="bx">Close</button></div></div>
-<div class="modal" id="zm"><img id="zi" alt=""></div>
 <div id="toast"></div>
 
 <script src="config.js"></script>
 <script>
 const GIFTS=[
-{id:"bird",v:"Free shipping PAN India above ₹699",t:"Voice-Controlled Talking Bird",d:"Interactive pet toy that repeats what you say",e:"🦜",p:399,i:"https://kidsbestie.com/cdn/shop/files/1_6e2543ad-5f5c-4c3b-a649-88b49fede343.png?v=1758896124",u:"https://kidsbestie.com/collections/shop-by-price/products/voice-controlled-talking-bird-interactive-repeating-pet-toy?_"},
+{id:"bird",v:"Free shipping PAN India above ₹699",t:"Voice-Controlled Talking Bird",d:"Interactive pet toy that repeats what you say",e:"🦜",p:399,f:"assets/products/bird.jpg",i:"https://kidsbestie.com/cdn/shop/files/1_6e2543ad-5f5c-4c3b-a649-88b49fede343.png?v=1758896124",u:"https://kidsbestie.com/collections/shop-by-price/products/voice-controlled-talking-bird-interactive-repeating-pet-toy?_"},
 {id:"art",v:"Free shipping PAN India above ₹699",t:"168-Piece Art Set",d:"Drawing & painting set for kids",e:"🎨",p:379,u:"https://kidsbestie.com/collections/gift-and-fun-toys/products/168-piece-art-set-drawing-and-painting-set-for-kids",i:"https://kidsbestie.com/cdn/shop/files/1_b1e9df78-a3b1-4eec-880d-84e5ab6757a5.png?v=1736512106"},
 {id:"speaker",v:"Free shipping PAN India above ₹699",t:"Mini Vocal Bluetooth Speaker",d:"Wireless speaker with mic & RGB lights",e:"🎤",p:349,u:"https://kidsbestie.com/collections/gift-and-fun-toys/products/wireless-mini-vocal-bluetooth-speaker-with-mic-rgb-lights-10-w-bluetooth-speaker",i:"https://kidsbestie.com/cdn/shop/files/Mini__Vocal__Bluetooth__Speaker__Mic.png?v=1786526852"},
 {id:"foam",v:"Free shipping PAN India above ₹699",t:"Alphabet & Number Foam Mat",d:"Soft play-and-learn foam mat",e:"🔤",p:199,u:"https://kidsbestie.com/collections/gift-and-fun-toys/products/foam-mat-alphabet-number-kids",i:"https://kidsbestie.com/cdn/shop/files/foam-mat-for-kids-interlocking-learning-alphabet-and-number-mat-for-kids-multi-color-random-colour-will-be-send-kids-bestie-1.png?v=1717788660"},
@@ -124,29 +121,12 @@ function render(){
  const N=g=>g.t||(info[g.id]&&info[g.id].t)||"Amazon gift pick";
  const P=g=>g.p||(info[g.id]&&info[g.id].p)||null;
  const card=g=>{const done=bought.has(g.id);return `<div class="gift ${done?"done":""}">${done?'<div class="ribbon">GIFTED ✓</div>':""}
-  <div class="pic" data-id="${g.id}"><img src="${imgSrc(g)}" alt="${esc(N(g))}" loading="lazy" onerror="this.replaceWith(document.createTextNode('${g.e}'))"><div class="lens"></div></div>
+  <div class="pic" data-id="${g.id}"><img src="${imgSrc(g)}" alt="${esc(N(g))}" loading="lazy" data-f="${g.f||""}" onerror="if(this.dataset.f&&!this.dataset.t){this.dataset.t=1;this.src=this.dataset.f}else this.replaceWith(document.createTextNode('${g.e}'))"></div>
   <div class="b"><h3>${esc(N(g))}${P(g)?` <span style="color:var(--pink)">₹${P(g)}</span>`:""}</h3><p>${esc(g.d)}</p>${g.v?`<p>🚚 ${esc(g.v)}</p>`:""}
   ${done?'<div class="tag">🎉 Already bought — thank you!</div>':`<button class="btn" data-buy="${g.id}">🛒 Buy this gift</button>`}</div></div>`};
  const rows=[["Rs 0 – Rs 500",n=>n!=null&&n<=500],["Rs 500 – Rs 1,000",n=>n>500&&n<1000],["Rs 1,000 and above",n=>n>=1000],["Price on store page",n=>n==null]];
  $("#gifts").innerHTML=rows.map(([t,f])=>{const l=GIFTS.filter(g=>f(P(g)));return l.length?`<h3 class="grp">${t}</h3>`+l.map(card).join(""):""}).join("");
- document.querySelectorAll(".pic[data-id]").forEach(initZoom);
 }
-function initZoom(p){
- const img=p.querySelector("img"),lens=p.querySelector(".lens");if(!img)return;
- const set=()=>{lens.style.backgroundImage=`url("${img.currentSrc||img.src}")`};
- img.addEventListener("load",set);if(img.complete)set();
- const S=2.6;
- p.addEventListener("mousemove",e=>{const r=p.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
-  const nat=img.naturalWidth/img.naturalHeight||1;
-  const fit=nat>=1?{w:r.width,h:r.width/nat}:{w:r.height*nat,h:r.height};
-  const w=fit.w*S,h=fit.h*S,ox=(r.width-fit.w)/2,oy=(r.height-fit.h)/2;
-  lens.style.backgroundSize=`${w}px ${h}px`;
-  lens.style.backgroundPosition=`${x*r.width-(ox*S+x*fit.w*S)}px ${y*r.height-(oy*S+y*fit.h*S)}px`;
-  p.classList.add("zoom")});
- p.addEventListener("mouseleave",()=>p.classList.remove("zoom"));
- p.addEventListener("click",()=>{if(matchMedia("(hover:none)").matches){$("#zi").src=img.currentSrc||img.src;$("#zm").classList.add("on")}});
-}
-$("#zm").onclick=()=>$("#zm").classList.remove("on");
 const N=g=>g.t||(info[g.id]&&info[g.id].t)||"Amazon gift pick";
 document.addEventListener("click",e=>{const id=e.target.dataset&&e.target.dataset.buy;if(!id)return;
  cur=GIFTS.find(g=>g.id===id);$("#bt").textContent="🎁 "+N(cur);$("#bgo").href=cur.u;$("#bn").value="";$("#bm").classList.add("on");window.open(cur.u,"_blank","noopener")});
