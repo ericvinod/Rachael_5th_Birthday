@@ -5,7 +5,6 @@ const P = "https://kidsbestie.com/products/";
 const GIFTS = {
   bird: P + "voice-controlled-talking-bird-interactive-repeating-pet-toy",
   speaker: P + "wireless-mini-vocal-bluetooth-speaker-with-mic-rgb-lights-10-w-bluetooth-speaker",
-  piano: P + "2-in-1-piano-xylophone-for-toddlers",
   tictactoe: P + "ai-intelligence-tic-tac-toe-9-game-modes-brain-boosting-strategy-fun",
   "B0DX2B9P66": "https://www.amazon.in/dp/B0DX2B9P66",
   "B0FBM2TBG6": "https://www.amazon.in/dp/B0FBM2TBG6",
@@ -13,10 +12,7 @@ const GIFTS = {
   "B0HBQW29Y4": "https://www.amazon.in/dp/B0HBQW29Y4",
   "B0DFMFYZYS": "https://www.amazon.in/dp/B0DFMFYZYS",
   "B0DCBC28SG": "https://www.amazon.in/dp/B0DCBC28SG",
-  "B0FP4SBVDS": "https://www.amazon.in/dp/B0FP4SBVDS",
   "B08D9JNTZ3": "https://www.amazon.in/dp/B08D9JNTZ3",
-  "9390093953": "https://www.amazon.in/dp/9390093953",
-  "B09F3DTZDF": "https://www.amazon.in/dp/B09F3DTZDF",
   "B0DJ8N3WX1": "https://www.amazon.in/dp/B0DJ8N3WX1",
   "B0FKGRGNLM": "https://www.amazon.in/dp/B0FKGRGNLM",
 };
